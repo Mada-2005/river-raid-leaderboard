@@ -1,0 +1,104 @@
+========================================
+  DEPLOY YOUR LEADERBOARD ONLINE
+  Quick 3-Step Guide
+========================================
+
+Your server code is ready! Follow these 3 simple steps:
+
+┌──────────────────────────────────────┐
+│  STEP 1: Create GitHub Repository   │
+│  Time: 2 minutes                     │
+└──────────────────────────────────────┘
+
+1. Go to: https://github.com/new
+2. Repository name: river-raid-leaderboard
+3. Make it PUBLIC (important!)
+4. Don't add README or .gitignore
+5. Click "Create repository"
+
+┌──────────────────────────────────────┐
+│  STEP 2: Push Your Code              │
+│  Time: 1 minute                      │
+└──────────────────────────────────────┘
+
+Option A - Use the batch file:
+1. Double-click: DEPLOY_TO_GITHUB.bat
+2. Enter your GitHub username when asked
+3. Done!
+
+Option B - Manual commands:
+1. Open terminal in online-server folder
+2. Run these commands (replace YOUR-USERNAME):
+
+   git remote add origin https://github.com/YOUR-USERNAME/river-raid-leaderboard.git
+   git branch -M main
+   git push -u origin main
+
+┌──────────────────────────────────────┐
+│  STEP 3: Deploy on Render.com        │
+│  Time: 3 minutes                     │
+└──────────────────────────────────────┘
+
+1. Go to: https://render.com
+2. Sign up with GitHub
+3. Click "New +" → "Web Service"
+4. Connect your "river-raid-leaderboard" repo
+5. Use these settings:
+   - Name: river-raid-leaderboard
+   - Runtime: Node
+   - Build: npm install
+   - Start: npm start
+   - Instance: Free
+6. Click "Create Web Service"
+7. Wait 2 minutes
+
+YOU'RE DONE! 🎉
+
+Your leaderboard will be at:
+https://river-raid-leaderboard.onrender.com/leaderboard.html
+
+========================================
+  WHAT TO DO NEXT
+========================================
+
+1. Copy your Render URL (from Render dashboard)
+
+2. Update your C++ game:
+   - Open Game.cpp
+   - Find line 45
+   - Change:
+     onlineLeaderboard = new OnlineLeaderboard("http://localhost:3000");
+   To:
+     onlineLeaderboard = new OnlineLeaderboard("https://YOUR-APP.onrender.com");
+
+3. Rebuild your game (F7 in Visual Studio)
+
+4. Play and finish a game
+
+5. Check your leaderboard - your score will appear!
+
+6. Share the leaderboard URL with anyone!
+
+========================================
+  HELPFUL FILES
+========================================
+
+Need more details?
+- RENDER_DEPLOYMENT_STEPS.txt - Detailed Render instructions
+- DEPLOYMENT_GUIDE.md - Complete guide with screenshots
+- DEPLOY_NOW.md - Step-by-step with troubleshooting
+
+========================================
+  SUPPORT
+========================================
+
+Check deployment logs at:
+https://dashboard.render.com
+
+Your server is running at:
+http://localhost:3000 (local)
+https://YOUR-APP.onrender.com (online)
+
+========================================
+
+Ready? Start with STEP 1!

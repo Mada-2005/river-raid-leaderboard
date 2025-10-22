@@ -1,0 +1,113 @@
+========================================
+RENDER.COM DEPLOYMENT - STEP BY STEP
+========================================
+
+After pushing to GitHub, follow these steps to deploy online:
+
+STEP 1: Sign Up for Render
+---------------------------
+1. Go to: https://render.com
+2. Click "Get Started for Free"
+3. Sign up with your GitHub account (easiest way)
+
+STEP 2: Create New Web Service
+-------------------------------
+1. In Render dashboard, click "New +" (top right corner)
+2. Select "Web Service"
+3. Click "Connect account" next to GitHub
+4. Authorize Render to access your repositories
+5. Find and select "river-raid-leaderboard" repository
+6. Click "Connect"
+
+STEP 3: Configure the Service
+------------------------------
+Fill in these settings EXACTLY:
+
+Name:               river-raid-leaderboard
+Region:             (Choose closest to you)
+Branch:             main
+Root Directory:     (leave blank)
+Runtime:            Node
+Build Command:      npm install
+Start Command:      npm start
+Instance Type:      Free
+
+STEP 4: Deploy!
+---------------
+1. Click "Create Web Service" button
+2. Wait 2-3 minutes while it deploys
+3. You'll see deployment logs scrolling
+4. When done, you'll see "Live" status with a green dot
+
+STEP 5: Get Your URL
+--------------------
+Your app will be at:
+https://river-raid-leaderboard.onrender.com
+
+(Or whatever name you chose)
+
+Your leaderboard webpage:
+https://river-raid-leaderboard.onrender.com/leaderboard.html
+
+========================================
+IMPORTANT NOTES
+========================================
+
+FREE TIER LIMITATIONS:
+- Sleeps after 15 minutes of inactivity
+- First request takes ~30 seconds to wake up
+- Perfect for personal projects and class assignments
+- 100% FREE forever!
+
+TO KEEP IT AWAKE (Optional):
+Use a free uptime monitor:
+- UptimeRobot.com
+- Cron-job.org
+
+Set it to ping your URL every 10 minutes
+
+========================================
+NEXT: UPDATE YOUR GAME
+========================================
+
+After deployment, update your C++ game:
+
+1. Open Game.cpp in Visual Studio
+2. Find line ~45 (constructor):
+
+   onlineLeaderboard = new OnlineLeaderboard("http://localhost:3000");
+
+3. Change to:
+
+   onlineLeaderboard = new OnlineLeaderboard("https://YOUR-APP.onrender.com");
+
+4. Replace YOUR-APP with your actual Render app name
+
+5. Rebuild game (F7)
+
+6. Run and play!
+
+========================================
+TROUBLESHOOTING
+========================================
+
+"Build failed":
+- Check package.json is in root
+- Verify npm install works locally
+
+"Can't connect":
+- Wait 30 seconds (app waking up)
+- Check URL is correct (https not http)
+- Check Render logs for errors
+
+"No scores appearing":
+- Test locally first
+- Check game finished properly
+- Verify URL in Game.cpp matches Render URL
+- Check Render dashboard → Logs tab
+
+========================================
+
+Done! Your leaderboard is now LIVE and accessible worldwide!
+
+Share the URL with friends and classmates!
