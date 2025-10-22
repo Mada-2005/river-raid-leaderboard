@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>River Raid - Online Leaderboard</title>
+    <link rel="stylesheet" href="leaderboard.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-content">
+                <h1>🎮 RIVER RAID</h1>
+                <h2>Global Online Leaderboard</h2>
+                <p class="subtitle">Live Rankings - Updates in Real-Time</p>
+                <div class="online-indicator">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusText">Connecting...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Overview -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value" id="totalPlayers">0</div>
+                <div class="stat-label">Total Players</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-value" id="topScore">0</div>
+                <div class="stat-label">Highest Score</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value" id="avgScore">0</div>
+                <div class="stat-label">Average Score</div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Search player..." />
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="sortLeaderboard('score')">
+                    Sort by Score
+                </button>
+                <button class="filter-btn" onclick="sortLeaderboard('name')">
+                    Sort by Name
+                </button>
+                <button class="refresh-btn" onclick="refreshLeaderboard()">
+                    🔄 Refresh
+                </button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="leaderboard-section">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th class="rank-col">Rank</th>
+                        <th class="name-col">Player</th>
+                        <th class="score-col">High Score</th>
+                        <th class="level-col">Level</th>
+                        <th class="fuel-col">Fuel</th>
+                        <th class="enemies-col">Enemies Faced</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                    <tr>
+                        <td colspan="6" class="loading">
+                            <div class="loader"></div>
+                            <p>Loading leaderboard data...</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="no-results" style="display: none;">
+            <div class="no-results-icon">🔍</div>
+            <h3>No players found</h3>
+            <p>Try adjusting your search criteria</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <h3>Unable to load leaderboard</h3>
+            <p id="errorText">Please check your connection to the server</p>
+            <button class="retry-btn" onclick="refreshLeaderboard()">Try Again</button>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Last updated: <span id="lastUpdate">Never</span></p>
+            <p class="auto-refresh">Auto-refreshing every 5 seconds</p>
+            <p class="api-info">Server: <span id="serverUrl">Connecting...</span></p>
+        </footer>
+    </div>
+
+    <script src="leaderboard-online.js"></script>
+</body>
+</html>
