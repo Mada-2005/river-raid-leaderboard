@@ -229,13 +229,13 @@ function setupSearch() {
     });
 }
 
-// Setup auto-refresh (faster for online version)
+// Setup auto-refresh
 function setupAutoRefresh() {
-    // Refresh every 5 seconds for real-time updates
+    // Refresh every 10 minutes
     autoRefreshInterval = setInterval(() => {
         console.log('Auto-refreshing leaderboard...');
         loadLeaderboard();
-    }, 5000);
+    }, 600000);  // 600000ms = 10 minutes
 }
 
 // Refresh leaderboard
